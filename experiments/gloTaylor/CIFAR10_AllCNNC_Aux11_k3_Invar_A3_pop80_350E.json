@@ -1,0 +1,46 @@
+{
+	"name": "TaylorGLO_CIFAR10_AllCNNC_Aux11_k3_Invar_A3_pop80_350E",
+	"kind": "generational",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10",
+			"model": "allcnnc",
+			"auxiliaryClassifiers": 2,
+			"learningRateSchedule": {
+				"initial": 0.01,
+				"decayEpochs": [200, 250, 300],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 350,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)===loss_x*tf.log(loss_y)===loss_x*tf.log(loss_y)",
+			"trainingAttempts": 3
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "validation"},
+			{"metric": "loss", "dataset": "validation"}
+		],
+		"maximumJobSubmissionRetries": 8
+	},
+	
+	"evolution": {
+		"maxGenerations": 100,
+		"fitnessMetric": {"metric": "accuracy", "dataset": "validation"},
+		"maximumMissingEvaluations": 0
+	},
+	
+	"experiment": {
+		"kind": "gloTaylorClassification",
+		"taylorGloConfig": {
+			"order": 3,
+			"populationSize": 80,
+			"sigma": 1.2,
+			"evolveLearningRate": false,
+			"ignoreInvariantCheck": false,
+			"inputVariables": ["trueLabel", "scaledLogits", "lossFunctionDelimiter", "trueLabel", "scaledLogits", "lossFunctionDelimiter", "trueLabel", "scaledLogits"]
+		}
+	}
+}

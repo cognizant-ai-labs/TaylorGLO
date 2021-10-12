@@ -1,0 +1,18 @@
+{
+	"name": "OneShot_CIFAR10ResNet_LossgaLoss",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10ResNet",
+			"lossFunction": "tf.scalar_mul(1.5742,(loss_y-1.4872))+tf.scalar_mul(-1.4446,tf.pow((loss_y-1.4872),2))+tf.scalar_mul(2.3616,tf.pow((loss_y-1.4872),3))+tf.scalar_mul(-0.6632,(loss_x-0.8439)*(loss_y-1.4872))+tf.scalar_mul(-2.8569,(loss_x-0.8439)*tf.pow((loss_y-1.4872),2))+tf.scalar_mul(-1.1313,tf.pow((loss_x-0.8439),2)*(loss_y-1.4872))",
+			"initialLearningRate": 0.1,
+			"steps": 70400,
+			"trainingDatasetPercentage": 1.0
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+		]
+	}
+}

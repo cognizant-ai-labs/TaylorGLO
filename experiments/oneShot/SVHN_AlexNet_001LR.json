@@ -1,0 +1,25 @@
+{
+	"name": "OneShot_SVHN_AlexNet_16E",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "svhn",
+			"model": "alexnet",
+			"learningRateSchedule": {
+				"initial": 0.01,
+				"decayEpochs": [81, 122],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 16,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)"
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

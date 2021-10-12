@@ -1,0 +1,31 @@
+{
+	"name": "OneShot_CIFAR10_AllCNNC_TaylorCE0505k10",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10",
+			"model": "allcnnc",
+			"learningRateSchedule": {
+				"initial": 0.01,
+				"decayEpochs": [200, 250, 300],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 350,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "(-1.0*(0.1-1.0*loss_y+4.0*loss_y*loss_y-8.0*loss_y*loss_y*loss_y+8.0*loss_y*loss_y*loss_y*loss_y-3.2*loss_y*loss_y*loss_y*loss_y*loss_y+loss_x*(2.77648-8.0*loss_y+12.0*loss_y*loss_y-10.6667*loss_y*loss_y*loss_y+4.0*loss_y*loss_y*loss_y*loss_y)))",
+			"trainingAttempts": 10
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}
+
+
+
+
+(-1.0*(0.05-y+9.0*y^2-48.0*y^3+168.0*y^4-403.2*y^5+672.0*y^6-768.0*y^7+576.0*y^8-256.0*y^9+51.2*y^10+x*(3.52212-18.0*y+72.0*y^2-224.0*y^3+504.0*y^4-806.4*y^5+896.0*y^6-658.286*y^7+288.0*y^8-56.8889*y^9)))

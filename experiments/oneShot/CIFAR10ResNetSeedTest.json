@@ -1,0 +1,19 @@
+{
+	"name": "OneShot_CIFAR10ResNet",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10ResNet",
+			"lossFunction": "loss_x*tf.log(loss_y)",
+			"initialLearningRate": 0.1,
+			"steps": 0,
+			"trainingDatasetPercentage": 1.0,
+			"initializationSeed": 42
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+		]
+	}
+}

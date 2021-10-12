@@ -1,0 +1,27 @@
+{
+	"name": "OneShot_CRISPR_DeepBind__MAE",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "crispr",
+			"model": "deepbind",
+			"learningRateSchedule": {
+				"initial": 0.001,
+				"decayEpochs": [],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 16,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "abs(loss_x-loss_y)",
+			"trainingAttempts": 10
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "mse", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		],
+		"maximumJobSubmissionRetries": 10
+	}
+}

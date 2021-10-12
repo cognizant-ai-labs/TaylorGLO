@@ -1,0 +1,26 @@
+{
+	"name": "OneShot_CIFAR10_ResNet56_wd0",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10",
+			"model": "resnet56",
+			"learningRateSchedule": {
+				"initial": 0.1,
+				"decayEpochs": [100, 150],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 200,
+			"trainingDatasetPercentage": 1.0,
+			"overrideWeightDecay": 0,
+			"lossFunction": "loss_x*tf.log(loss_y)"
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

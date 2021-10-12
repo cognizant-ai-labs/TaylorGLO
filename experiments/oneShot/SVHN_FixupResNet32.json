@@ -1,0 +1,25 @@
+{
+	"name": "OneShot_SVHN_FixupResNet32",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "svhn",
+			"model": "fixup_resnet32",
+			"learningRateSchedule": {
+				"initial": 0.1,
+				"decayEpochs": [100, 150],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 200,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)"
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

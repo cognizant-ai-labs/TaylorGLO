@@ -1,0 +1,26 @@
+{
+	"name": "OneShot_CIFAR10_AllCNNC_TaylorCE0505k2",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10",
+			"model": "allcnnc",
+			"learningRateSchedule": {
+				"initial": 0.01,
+				"decayEpochs": [200, 250, 300],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 350,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "(-1.0*(loss_x*(1.69315-2.0*loss_y)+(0.5-loss_y)*(0.5-loss_y)))",
+			"trainingAttempts": 10
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

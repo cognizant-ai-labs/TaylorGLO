@@ -1,0 +1,18 @@
+{
+	"name": "OneShot_MNIST",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "mnist",
+			"lossFunction": "loss_x*tf.log(loss_y)",
+			"initialLearningRate": 0.01,
+			"steps": 2000,
+			"trainingDatasetPercentage": 1.0
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+		]
+	}
+}

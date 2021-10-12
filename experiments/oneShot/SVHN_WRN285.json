@@ -1,0 +1,26 @@
+{
+	"name": "OneShot_SVHN_WRN285",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "svhn",
+			"model": "wrn285",
+			"learningRateSchedule": {
+				"initial": 0.01,
+				"decayEpochs": [80, 120],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 160,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)",
+			"trainingAttempts": 10
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

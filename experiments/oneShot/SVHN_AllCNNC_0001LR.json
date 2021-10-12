@@ -1,0 +1,25 @@
+{
+	"name": "OneShot_SVHN_AllCNNC_0001LR",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "svhn",
+			"model": "allcnnc",
+			"learningRateSchedule": {
+				"initial": 0.001,
+				"decayEpochs": [200, 250, 300],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 350,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)"
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

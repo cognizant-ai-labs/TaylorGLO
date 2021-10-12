@@ -1,0 +1,29 @@
+{
+	"name": "OneShot_CIFAR10_WRN2810_CutMix05",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10",
+			"model": "wrn2810",
+			"learningRateSchedule": {
+				"initial": 0.1,
+				"decayEpochs": [60, 120, 160],
+				"decayEpochGamma": 0.2,
+				"everyEpochGamma": 1.0
+			},
+			"cutmix": {
+				"alpha": 1.0,
+				"probability": 0.5
+			},
+			"epochs": 200,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)"
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+			{"metric": "loss", "dataset": "testing"}
+		]
+	}
+}

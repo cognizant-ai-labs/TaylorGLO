@@ -1,0 +1,19 @@
+{
+	"name": "OneShot_CIFAR10ResNet_Reevaluation",
+	"kind": "oneShot",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10ResNet",
+			"lossFunction": "loss_x*tf.log(loss_y)",
+			"initialLearningRate": 0.1,
+			"steps": 0,
+			"trainingDatasetPercentage": 1.0,
+			"baseModelS3Tar": "s3://YOURBUCKET-datasets/experiments/1582701447_608bc5d9-a1be-417a-88c2-867b0b5c6d1b/modeldir.tar|FINAL_tfresnet_step70399.ckpt"
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "testing"},
+		]
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "TaylorGLO_MNIST_noInvariant",
+	"kind": "generational",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "mnist",
+			"lossFunction": "loss_x*tf.log(loss_y)",
+			"initialLearningRate": 0.01,
+			"steps": 200,
+			"trainingDatasetPercentage": 1.0
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "validation"},
+		],
+		"maximumJobSubmissionRetries": 2
+	},
+	
+	"evolution": {
+		"maxGenerations": 100,
+		"fitnessMetric": {"metric": "accuracy", "dataset": "validation"},
+		"maximumMissingEvaluations": 0
+	},
+	
+	"experiment": {
+		"kind": "gloTaylorClassification",
+		"taylorGloConfig": {
+			"order": 3,
+			"populationSize": 28,
+			"sigma": 1.2,
+			"evolveLearningRate": false,
+			"ignoreInvariantCheck": true
+		}
+	}
+}

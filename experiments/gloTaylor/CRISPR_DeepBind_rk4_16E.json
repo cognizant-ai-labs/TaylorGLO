@@ -1,0 +1,44 @@
+{
+	"name": "TaylorGLO_CRISPR_DeepBind_rk4_16E",
+	"kind": "generational",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "crispr",
+			"model": "deepbind",
+			"learningRateSchedule": {
+				"initial": 0.001,
+				"decayEpochs": [],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"epochs": 16,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "(loss_x-loss_y)*(loss_x-loss_y)",
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "mse", "dataset": "validation"},
+			{"metric": "loss", "dataset": "validation"}
+		],
+		"maximumJobSubmissionRetries": 10
+	},
+	
+	"evolution": {
+		"maxGenerations": 100,
+		"fitnessMetric": {"metric": "mse", "dataset": "validation"},
+		"maximumMissingEvaluations": 0
+	},
+	
+	"experiment": {
+		"kind": "gloTaylorClassification",
+		"taylorGloConfig": {
+			"order": 4,
+			"populationSize": 20,
+			"sigma": 1.2,
+			"evolveLearningRate": false,
+			"ignoreInvariantCheck": true,
+			"inputVariables": ["trueLabel", "scaledLogits", "residuals"]
+		}
+	}
+}

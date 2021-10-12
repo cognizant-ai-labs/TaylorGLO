@@ -1,0 +1,48 @@
+{
+	"name": "TaylorGLO_CIFAR10_AlexNet_Cutout16_k3_Invar_A3_pop40_164E",
+	"kind": "generational",
+	
+	"evaluation": {
+		"baseTrainingConfig": {
+			"target": "cifar10",
+			"model": "alexnet",
+			"learningRateSchedule": {
+				"initial": 0.1,
+				"decayEpochs": [81, 122],
+				"decayEpochGamma": 0.1,
+				"everyEpochGamma": 1.0
+			},
+			"cutout": {
+				"numberHoles": 1,
+				"length": 16
+			},
+			"epochs": 164,
+			"trainingDatasetPercentage": 1.0,
+			"lossFunction": "loss_x*tf.log(loss_y)",
+			"trainingAttempts": 3
+		},
+		"evaluator": "studio",
+		"evaluatedMetrics": [
+			{"metric": "accuracy", "dataset": "validation"},
+			{"metric": "loss", "dataset": "validation"}
+		],
+		"maximumJobSubmissionRetries": 6
+	},
+	
+	"evolution": {
+		"maxGenerations": 100,
+		"fitnessMetric": {"metric": "accuracy", "dataset": "validation"},
+		"maximumMissingEvaluations": 0
+	},
+	
+	"experiment": {
+		"kind": "gloTaylorClassification",
+		"taylorGloConfig": {
+			"order": 3,
+			"populationSize": 40,
+			"sigma": 1.2,
+			"evolveLearningRate": false,
+			"ignoreInvariantCheck": false
+		}
+	}
+}
