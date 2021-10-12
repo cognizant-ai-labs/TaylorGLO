@@ -31,10 +31,10 @@ More details are available in Chapter 3 of Santiago Gonzalez's dissertation: [Im
 	* `$ LossferatuRunner getinvocation CONFIG.json`
 	* `$ LossferatuRunner studiolog JOB_NAME (parse)`
 	* `$ LossferatuRunner test`
-* Example invocations for `LossferatuRunner` are shown in [LossferatuRunner/README.md](https://github.com/cognizant-ai-labs/TaylorGLO/tree/main/fumanchu/README.md).
-* Example invocations for Fumanchu are shown in [fumanchu/TRAINING.md](https://github.com/cognizant-ai-labs/TaylorGLO/tree/main/fumanchu/TRAINING.md).
-	* Dependencies for Fumanchu are listed in [fumanchu/requirements.txt](https://github.com/cognizant-ai-labs/TaylorGLO/tree/main/fumanchu/requirements.txt).
-* Functional Lossferatu experiment configuration files can be found in the [experiments](https://github.com/cognizant-ai-labs/TaylorGLO/tree/main/experiments) directory
+* Example invocations for `LossferatuRunner` are shown in [LossferatuRunner/README.md](https://github.com/cognizant-ai-labs/TaylorGLO/blob/main/fumanchu/README.md).
+* Example invocations for Fumanchu are shown in [fumanchu/TRAINING.md](https://github.com/cognizant-ai-labs/TaylorGLO/blob/main/fumanchu/TRAINING.md).
+	* Dependencies for Fumanchu are listed in [fumanchu/requirements.txt](https://github.com/cognizant-ai-labs/TaylorGLO/blob/main/fumanchu/requirements.txt).
+* Functional Lossferatu experiment configuration files can be found in the [experiments](https://github.com/cognizant-ai-labs/TaylorGLO/blob/main/experiments) directory
 * Running evolution end-to-end requires functional [StudioML](https://studio.ml) infrastructure with the [studio-go-runner](https://github.com/studioml/studio-go-runner).
 	* Notably, due to Lossferatu's modularity, it can be readily adapted to other infrastructure (take note of the `"evaluator": "studio"` field in experiment configs and `TrainingInterface.swift`).
 
