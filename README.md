@@ -44,7 +44,7 @@ If you use **TaylorGLO** in your research, please cite it with the following Bib
 
 ```
 @article{taylorglo,
-	author = {Gonzalez, Santiago and Miikkulainen, Riso},
+	author = {Gonzalez, Santiago and Miikkulainen, Risto},
 	year = {2021},
 	month = {07},
 	pages = {},
